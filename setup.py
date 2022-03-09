@@ -7,8 +7,12 @@ setup(
     include_package_data=True,
     install_requires=[
         "Click",
-        "peewee",
         "aiogram",
+        "peewee",
+        "flask",
+        "flask-admin",
+        "flask-basicauth",
+        "wtf-peewee",
     ],
     entry_points={
         "console_scripts": [

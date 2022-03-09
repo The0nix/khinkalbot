@@ -18,5 +18,11 @@ def init():
 
 @cli.command()
 def start():
-    from khinkalbot.bot import start_bot
+    from khinkalbot.bot import start as start_bot
     start_bot()
+
+
+@cli.command()
+def admin():
+    from khinkalbot.db.admin.app import start as start_admin
+    start_admin()

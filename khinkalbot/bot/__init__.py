@@ -1,4 +1,4 @@
-def start_bot():
+def start():
     from aiogram import executor
     from khinkalbot.bot.vitals import dp
     import khinkalbot.bot.handlers  # noqa
