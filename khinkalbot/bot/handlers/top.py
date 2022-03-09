@@ -6,7 +6,9 @@ from khinkalbot.db.db import db
 
 
 def make_khinkal_top(users: User) -> str:
-    strings = [f"{user.login}: {user.khinkal_count} (с {user.start_date:%d.%m.%y})" for user in users]
+
+    strings = [f"{i}. {user.login}: {user.khinkal_count} (с {user.start_date:%d.%m.%y})"
+               for i, user in enumerate(users, 1)]
     return "\n".join(strings)
 
 
