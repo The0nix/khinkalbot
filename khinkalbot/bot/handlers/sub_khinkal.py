@@ -1,7 +1,6 @@
 import logging
 
 import peewee
-import aiogram
 from aiogram import types
 from aiogram.utils.callback_data import CallbackData
 
@@ -24,7 +23,8 @@ async def add_khinkals(message: types.Message):
         return
     try:
         number = int(number)
-    except ValueError:
+        assert number > 0
+    except (ValueError, AssertionError):
         await message.reply(f"Плохое число: \"{number}\"")
         return
 

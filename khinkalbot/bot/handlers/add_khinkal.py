@@ -18,7 +18,8 @@ async def add_khinkals(message: types.Message):
     _, number = message.get_full_command()
     try:
         number = int(number)
-    except ValueError:
+        assert number > 0
+    except (ValueError, AssertionError):
         await message.reply(f"Плохое число: \"{number}\"")
         return
 

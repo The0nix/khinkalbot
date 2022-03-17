@@ -4,6 +4,7 @@ from khinkalbot.db.db import db
 
 
 class User(peewee.Model):
+    object_id = peewee.AutoField()
     id = peewee.BigIntegerField()
     chat_id = peewee.BigIntegerField()
     login = peewee.CharField()
