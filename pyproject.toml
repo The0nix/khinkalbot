@@ -1,0 +1,22 @@
+[project]
+name = "khinkalbot"
+version = "0.1.0"
+description = "Bot for counting khinkals in chat"
+requires-python = "==3.11.*"
+dependencies = [
+    "aiogram==2.*",
+    "click>=8.3.0",
+    "flask>=3.1.2",
+    "flask-admin>=2.0.0",
+    "flask-basicauth>=0.2.0",
+    "peewee>=3.18.2",
+    "wtf-peewee>=3.0.6",
+]
+
+
+[project.scripts]
+khinkalbot = "khinkalbot.__main__:cli"
+
+[build-system]
+requires = ["uv_build>=0.9.6,<0.10.0"]
+build-backend = "uv_build"
