@@ -1,10 +1,11 @@
-FROM python:3.11-slim AS builder
-
-RUN pip install --no-cache-dir "uv>=0.9.6,<0.10.0"
+FROM ghcr.io/astral-sh/uv:0.9-python3.11-alpine
 
 ENV UV_COMPILE_BYTECODE=1 \
     UV_LINK_MODE=copy \
-    UV_PYTHON_DOWNLOADS=never
+    UV_NO_CACHE=1 \
+    UV_PYTHON_DOWNLOADS=never \
+    PATH="/app/.venv/bin:$PATH" \
+    PYTHONUNBUFFERED=1
 
 WORKDIR /app
 
@@ -14,14 +15,6 @@ RUN uv sync --locked --no-dev --no-install-project
 
 COPY src ./src
 RUN uv sync --locked --no-dev --no-editable
-
-
-FROM python:3.11-slim
-
-COPY --from=builder /app/.venv /app/.venv
-
-ENV PATH="/app/.venv/bin:$PATH" \
-    PYTHONUNBUFFERED=1
 
 # The SQLite database (users_data.db) is created in the working directory
 WORKDIR /data
