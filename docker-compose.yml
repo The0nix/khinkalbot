@@ -1,0 +1,22 @@
+services:
+  bot:
+    build: .
+    image: khinkalbot
+    command: start
+    restart: unless-stopped
+    env_file: .env
+    volumes:
+      - ./data:/data
+
+  # Optional admin console: docker compose --profile admin up -d
+  admin:
+    build: .
+    image: khinkalbot
+    command: admin
+    restart: unless-stopped
+    profiles: [admin]
+    env_file: .env
+    ports:
+      - "${ADMIN_PORT}:${ADMIN_PORT}"
+    volumes:
+      - ./data:/data
